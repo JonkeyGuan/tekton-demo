@@ -1,0 +1,23 @@
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: tekton-demo
+  namespace: tekton-demo
+spec:
+  params:
+    - name: IMAGE_NAME
+      value: 'image-registry.openshift-image-registry.svc:5000/tekton-demo/tekton-demo'
+    - name: APP_NAME
+      value: tekton-demo
+    - name: GITHUB_REPO_URL
+      value: 'https://github.com/JonkeyGuan/tekton-demo'
+    - name: GITHUB_REPO_REVISION
+      value: main
+  pipelineRef:
+    name: tekton-demo
+  serviceAccountName: pipeline
+  timeout: 1h0m0s
+  workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: source-pvc

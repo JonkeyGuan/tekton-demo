@@ -1,0 +1,11 @@
+kind: Route
+apiVersion: route.openshift.io/v1
+metadata:
+  name: el-tekton-demo
+spec:
+  to:
+    kind: Service
+    name: el-tekton-demo
+    weight: 100
+  port:
+    targetPort: http-listener

@@ -1,0 +1,22 @@
+[
+    {
+      "id": "webhook",
+      "execute-command": "/home/adnan/redeploy-go-webhook.sh",
+      "command-working-directory": "/home/adnan/go",
+      "pass-arguments-to-command":
+      [
+        {
+          "source": "payload",
+          "name": "head_commit.id"
+        },
+        {
+          "source": "payload",
+          "name": "pusher.name"
+        },
+        {
+          "source": "payload",
+          "name": "pusher.email"
+        }
+      ]
+    }
+]

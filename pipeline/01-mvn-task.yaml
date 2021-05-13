@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: ClusterTask
+metadata:
+  name: mvn
+spec:
+  params:
+    - default:
+        - package
+      description: The Maven goals to run
+      name: GOALS
+      type: array
+    - name: SUB_DIR
+      description: The sub directory to work on 
+      type: string
+      default: ""
+  steps:
+    - args:
+        - '-Dmaven.repo.local=$(workspaces.source.path)/../.m2'
+        - $(inputs.params.GOALS)
+      command:
+        - /usr/bin/mvn
+      image: gcr.io/cloud-builders/mvn
+      name: mvn
+      resources: {}
+      workingDir: $(workspaces.source.path)/$(params.SUB_DIR)
+  workspaces:
+    - name: source

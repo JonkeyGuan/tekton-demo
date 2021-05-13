@@ -2,7 +2,7 @@
 apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
-  name: cloud-native-java-app
+  name: java-app
   namespace: openshift
   labels:
     pipeline.openshift.io/runtime: java
@@ -25,12 +25,8 @@ spec:
       default: main
   workspaces:
     - name: source
-    - name: maven-settings
   tasks:
     - name: clone-sources
-      taskRef:
-        name: git-clone
-        kind: ClusterTask
       params:
         - name: url
           value: $(params.GITHUB_REPO_URL)
@@ -38,73 +34,83 @@ spec:
           value: $(params.GITHUB_REPO_REVISION)
         - name: deleteExisting
           value: 'true'
+        - name: subdirectory
+          value: $(params.APP_NAME)
+      taskRef:
+        kind: ClusterTask
+        name: git-clone
       workspaces:
         - name: output
           workspace: source
     - name: build-test
-      taskRef:
-        name: maven
-        kind: ClusterTask
-      runAfter:
-        - clone-sources
       params:
         - name: GOALS
           value:
-            - 'clean'
-            - 'test'
+            - clean
+            - test
+        - name: SUB_DIR
+          value: $(params.APP_NAME)
+      runAfter:
+        - clone-sources
+      taskRef:
+        kind: ClusterTask
+        name: mvn
       workspaces:
         - name: source
           workspace: source
-        - name: maven-settings
-          workspace: maven-settings
     - name: build-binary
-      taskRef:
-        name: maven
-        kind: ClusterTask
-      runAfter:
-        - build-test
       params:
         - name: GOALS
           value:
             - '-DskipTests'
-            - 'clean'
-            - 'package'
+            - clean
+            - package
+        - name: SUB_DIR
+          value: $(params.APP_NAME)
+      runAfter:
+        - build-test
+      taskRef:
+        kind: ClusterTask
+        name: mvn
       workspaces:
         - name: source
           workspace: source
-        - name: maven-settings
-          workspace: maven-settings
     - name: build-image
-      taskRef:
-        name: buildah
-        kind: ClusterTask
-      runAfter:
-        - build-binary
       params:
         - name: IMAGE
-          value: '$(params.IMAGE_NAME)'
+          value: $(params.IMAGE_NAME)
         - name: TLSVERIFY
           value: 'false'
+        - name: CONTEXT
+          value: $(params.APP_NAME)
+      runAfter:
+        - build-binary
+      taskRef:
+        kind: ClusterTask
+        name: buildah
       workspaces:
         - name: source
           workspace: source
     - name: apply-manifests
-      taskRef:
-        name: apply-manifests
-        kind: ClusterTask
-      workspaces:
-      - name: source
-        workspace: source
-      runAfter:
-      - build-image
-    - name: update-deployment
-      taskRef:
-        name: update-deployment
-        kind: ClusterTask
       params:
-      - name: deployment
-        value: $(params.APP_NAME)
-      - name: IMAGE
-        value: $(params.IMAGE_NAME)@$(tasks.build-image.results.IMAGE_DIGEST)
+        - name: sub_dir
+          value: $(params.APP_NAME)
       runAfter:
-      - apply-manifests  
+        - build-image
+      taskRef:
+        kind: ClusterTask
+        name: apply-manifests
+      workspaces:
+        - name: source
+          workspace: source
+    - name: update-deployment
+      params:
+        - name: deployment
+          value: $(params.APP_NAME)
+        - name: IMAGE
+          value: $(params.IMAGE_NAME)@$(tasks.build-image.results.IMAGE_DIGEST)
+      runAfter:
+        - apply-manifests
+      taskRef:
+        kind: ClusterTask
+        name: update-deployment

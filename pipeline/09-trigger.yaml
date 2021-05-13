@@ -1,0 +1,10 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: Trigger
+metadata:
+  name: tekton-demo
+spec:
+  serviceAccountName: pipeline
+  bindings:
+    - ref: tekton-demo
+  template:
+    ref: tekton-demo

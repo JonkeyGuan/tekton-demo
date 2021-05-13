@@ -1,0 +1,42 @@
+apiVersion: triggers.tekton.dev/v1alpha1
+kind: TriggerTemplate
+metadata:
+  name: tekton-demo
+spec:
+  params:
+    - name: IMAGE_NAME
+      description: image name to deploy
+      default: 'image-registry.openshift-image-registry.svc:5000/tekton-demo/tekton-demo'
+    - name: APP_NAME
+      description: name of application for git repo & used for maven build and app deploy with label
+      default: tekton-demo
+    - name: GITHUB_REPO_URL
+      description: git repo url
+      default: 'https://github.com/JonkeyGuan/tekton-demo'
+    - name: GITHUB_REPO_REVISION
+      description: git repo revision
+      default: main
+  resourcetemplates:
+    - apiVersion: tekton.dev/v1beta1
+      kind: PipelineRun
+      metadata:
+        name: tekton-demo
+        namespace: tekton-demo
+      spec:
+        params:
+          - name: IMAGE_NAME
+            value: '$(tt.params.IMAGE_NAME)'
+          - name: APP_NAME
+            value: '$(tt.params.APP_NAME)'
+          - name: GITHUB_REPO_URL
+            value: '$(tt.params.GITHUB_REPO_URL)'
+          - name: GITHUB_REPO_REVISION
+            value: '$(tt.params.GITHUB_REPO_REVISION)'
+        pipelineRef:
+          name: tekton-demo
+        serviceAccountName: pipeline
+        timeout: 1h0m0s
+        workspaces:
+          - name: source
+            persistentVolumeClaim:
+              claimName: source-pvc
