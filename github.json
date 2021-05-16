@@ -1,22 +1,221 @@
-[
-    {
-      "id": "webhook",
-      "execute-command": "/home/adnan/redeploy-go-webhook.sh",
-      "command-working-directory": "/home/adnan/go",
-      "pass-arguments-to-command":
-      [
-        {
-          "source": "payload",
-          "name": "head_commit.id"
+{
+    "ref": "refs/heads/main",
+    "before": "766fdb0f0ab454ec3f834b2793232d31b9deda0d",
+    "after": "81458ac78ef097d04ec051559e26d9cd36dfc9b5",
+    "repository": {
+      "id": 366578294,
+      "node_id": "MDEwOlJlcG9zaXRvcnkzNjY1NzgyOTQ=",
+      "name": "tekton-demo",
+      "full_name": "JonkeyGuan/tekton-demo",
+      "private": false,
+      "owner": {
+        "name": "JonkeyGuan",
+        "email": "jonkey.guan@gmail.com",
+        "login": "JonkeyGuan",
+        "id": 10363030,
+        "node_id": "MDQ6VXNlcjEwMzYzMDMw",
+        "avatar_url": "https://avatars.githubusercontent.com/u/10363030?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/JonkeyGuan",
+        "html_url": "https://github.com/JonkeyGuan",
+        "followers_url": "https://api.github.com/users/JonkeyGuan/followers",
+        "following_url": "https://api.github.com/users/JonkeyGuan/following{/other_user}",
+        "gists_url": "https://api.github.com/users/JonkeyGuan/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/JonkeyGuan/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/JonkeyGuan/subscriptions",
+        "organizations_url": "https://api.github.com/users/JonkeyGuan/orgs",
+        "repos_url": "https://api.github.com/users/JonkeyGuan/repos",
+        "events_url": "https://api.github.com/users/JonkeyGuan/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/JonkeyGuan/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      "html_url": "https://github.com/JonkeyGuan/tekton-demo",
+      "description": null,
+      "fork": false,
+      "url": "https://github.com/JonkeyGuan/tekton-demo",
+      "forks_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/forks",
+      "keys_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/keys{/key_id}",
+      "collaborators_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/collaborators{/collaborator}",
+      "teams_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/teams",
+      "hooks_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/hooks",
+      "issue_events_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/issues/events{/number}",
+      "events_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/events",
+      "assignees_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/assignees{/user}",
+      "branches_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/branches{/branch}",
+      "tags_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/tags",
+      "blobs_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/git/blobs{/sha}",
+      "git_tags_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/git/tags{/sha}",
+      "git_refs_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/git/refs{/sha}",
+      "trees_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/git/trees{/sha}",
+      "statuses_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/statuses/{sha}",
+      "languages_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/languages",
+      "stargazers_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/stargazers",
+      "contributors_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/contributors",
+      "subscribers_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/subscribers",
+      "subscription_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/subscription",
+      "commits_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/commits{/sha}",
+      "git_commits_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/git/commits{/sha}",
+      "comments_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/comments{/number}",
+      "issue_comment_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/issues/comments{/number}",
+      "contents_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/contents/{+path}",
+      "compare_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/compare/{base}...{head}",
+      "merges_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/merges",
+      "archive_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/{archive_format}{/ref}",
+      "downloads_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/downloads",
+      "issues_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/issues{/number}",
+      "pulls_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/pulls{/number}",
+      "milestones_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/milestones{/number}",
+      "notifications_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/notifications{?since,all,participating}",
+      "labels_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/labels{/name}",
+      "releases_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/releases{/id}",
+      "deployments_url": "https://api.github.com/repos/JonkeyGuan/tekton-demo/deployments",
+      "created_at": 1620789228,
+      "updated_at": "2021-05-12T14:10:10Z",
+      "pushed_at": 1620913661,
+      "git_url": "git://github.com/JonkeyGuan/tekton-demo.git",
+      "ssh_url": "git@github.com:JonkeyGuan/tekton-demo.git",
+      "clone_url": "https://github.com/JonkeyGuan/tekton-demo.git",
+      "svn_url": "https://github.com/JonkeyGuan/tekton-demo",
+      "homepage": null,
+      "size": 6,
+      "stargazers_count": 0,
+      "watchers_count": 0,
+      "language": "Java",
+      "has_issues": true,
+      "has_projects": true,
+      "has_downloads": true,
+      "has_wiki": true,
+      "has_pages": false,
+      "forks_count": 0,
+      "mirror_url": null,
+      "archived": false,
+      "disabled": false,
+      "open_issues_count": 0,
+      "license": null,
+      "forks": 0,
+      "open_issues": 0,
+      "watchers": 0,
+      "default_branch": "main",
+      "stargazers": 0,
+      "master_branch": "main"
+    },
+    "pusher": {
+      "name": "JonkeyGuan",
+      "email": "jonkey.guan@gmail.com"
+    },
+    "sender": {
+      "login": "JonkeyGuan",
+      "id": 10363030,
+      "node_id": "MDQ6VXNlcjEwMzYzMDMw",
+      "avatar_url": "https://avatars.githubusercontent.com/u/10363030?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/JonkeyGuan",
+      "html_url": "https://github.com/JonkeyGuan",
+      "followers_url": "https://api.github.com/users/JonkeyGuan/followers",
+      "following_url": "https://api.github.com/users/JonkeyGuan/following{/other_user}",
+      "gists_url": "https://api.github.com/users/JonkeyGuan/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/JonkeyGuan/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/JonkeyGuan/subscriptions",
+      "organizations_url": "https://api.github.com/users/JonkeyGuan/orgs",
+      "repos_url": "https://api.github.com/users/JonkeyGuan/repos",
+      "events_url": "https://api.github.com/users/JonkeyGuan/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/JonkeyGuan/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "created": false,
+    "deleted": false,
+    "forced": false,
+    "base_ref": null,
+    "compare": "https://github.com/JonkeyGuan/tekton-demo/compare/766fdb0f0ab4...81458ac78ef0",
+    "commits": [
+      {
+        "id": "81458ac78ef097d04ec051559e26d9cd36dfc9b5",
+        "tree_id": "b0cf8d29beea12af2bf5b11e6c3107ccdca7e54f",
+        "distinct": true,
+        "message": "added triggers",
+        "timestamp": "2021-05-13T21:47:30+08:00",
+        "url": "https://github.com/JonkeyGuan/tekton-demo/commit/81458ac78ef097d04ec051559e26d9cd36dfc9b5",
+        "author": {
+          "name": "Jonkey Guan",
+          "email": "jonkey.guan@gmail.com",
+          "username": "JonkeyGuan"
         },
-        {
-          "source": "payload",
-          "name": "pusher.name"
+        "committer": {
+          "name": "Jonkey Guan",
+          "email": "jonkey.guan@gmail.com",
+          "username": "JonkeyGuan"
         },
-        {
-          "source": "payload",
-          "name": "pusher.email"
-        }
+        "added": [
+          "github.json",
+          "pipeline/01-mvn-task.yaml",
+          "pipeline/02-apply-manifests-task.yaml",
+          "pipeline/03-update-deployment-task.yaml",
+          "pipeline/04-java-app-pipeline.yaml",
+          "pipeline/05-persistent-volume-claim.yaml",
+          "pipeline/06-pipeline-run.yaml",
+          "pipeline/07-trigger-template.yaml",
+          "pipeline/08-trigger-binding.yaml",
+          "pipeline/09-trigger.yaml",
+          "pipeline/10-event-listener.yaml",
+          "pipeline/11-event-listener-route.yaml"
+        ],
+        "removed": [
+          "pipeline/00-settings-configmap.yaml",
+          "pipeline/01-apply-manifests-task.yaml",
+          "pipeline/02-update-deployment-task.yaml",
+          "pipeline/03-cloud-native-java-app-pipeline.yaml",
+          "pipeline/04_persistent_volume_claim.yaml",
+          "tools/nexus.yaml"
+        ],
+        "modified": [
+  
+        ]
+      }
+    ],
+    "head_commit": {
+      "id": "81458ac78ef097d04ec051559e26d9cd36dfc9b5",
+      "tree_id": "b0cf8d29beea12af2bf5b11e6c3107ccdca7e54f",
+      "distinct": true,
+      "message": "added triggers",
+      "timestamp": "2021-05-13T21:47:30+08:00",
+      "url": "https://github.com/JonkeyGuan/tekton-demo/commit/81458ac78ef097d04ec051559e26d9cd36dfc9b5",
+      "author": {
+        "name": "Jonkey Guan",
+        "email": "jonkey.guan@gmail.com",
+        "username": "JonkeyGuan"
+      },
+      "committer": {
+        "name": "Jonkey Guan",
+        "email": "jonkey.guan@gmail.com",
+        "username": "JonkeyGuan"
+      },
+      "added": [
+        "github.json",
+        "pipeline/01-mvn-task.yaml",
+        "pipeline/02-apply-manifests-task.yaml",
+        "pipeline/03-update-deployment-task.yaml",
+        "pipeline/04-java-app-pipeline.yaml",
+        "pipeline/05-persistent-volume-claim.yaml",
+        "pipeline/06-pipeline-run.yaml",
+        "pipeline/07-trigger-template.yaml",
+        "pipeline/08-trigger-binding.yaml",
+        "pipeline/09-trigger.yaml",
+        "pipeline/10-event-listener.yaml",
+        "pipeline/11-event-listener-route.yaml"
+      ],
+      "removed": [
+        "pipeline/00-settings-configmap.yaml",
+        "pipeline/01-apply-manifests-task.yaml",
+        "pipeline/02-update-deployment-task.yaml",
+        "pipeline/03-cloud-native-java-app-pipeline.yaml",
+        "pipeline/04_persistent_volume_claim.yaml",
+        "tools/nexus.yaml"
+      ],
+      "modified": [
+  
       ]
     }
-]
+  }
+

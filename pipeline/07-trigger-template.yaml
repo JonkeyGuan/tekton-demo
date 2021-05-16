@@ -20,7 +20,7 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        name: tekton-demo
+        generateName: tekton-demo-
         namespace: tekton-demo
       spec:
         params:
